@@ -12,7 +12,7 @@ import revxrsal.commands.velocity.VelocityCommandHandler;
 @Plugin(
         id = "lava-notify",
         name = "LavaNotify",
-        version = "1.1.0",
+        version = "1.1.1",
         description = "All in one Notify manager",
         authors = {"MagmaBlock"}
 
