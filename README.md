@@ -1,6 +1,8 @@
 # LavaNotify
 A notify plugin for Velocity. Simple but works.
 
+![Logo](/LavaNotify-Logo.png)
+
 ## Feature
 * Support both MiniMessage and legacy style code (included HEX color)
 ```html
