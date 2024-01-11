@@ -1,5 +1,5 @@
 # LavaNotify
-A notify plugin for Velocity. Simple but works.
+A notify plugin for Velocity. You can use it to send broadcasts via commands. Simple but works.
 
 ![Logo](/LavaNotify-Logo.png)
 
