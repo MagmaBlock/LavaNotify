@@ -6,7 +6,6 @@ A notify plugin for Velocity. Simple but works.
 ## Feature
 * Support both MiniMessage and legacy style code (included HEX color)
 ```html
-<!-- You can  -->
 <red><bold>I'm red and bold.</bold></red> &r&fI'm white! <reset><color:#f082ff>More</color> &#123456colors!
 ```
 * Support send to all players or a single server.
