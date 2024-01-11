@@ -4,6 +4,7 @@ import com.velocitypowered.api.command.CommandSource;
 import ink.magma.lavanotify.error.CannotParseTitleException;
 import ink.magma.lavanotify.error.NoSuchServerException;
 import ink.magma.lavanotify.message.ErrorMessage;
+import ink.magma.lavanotify.message.SuccessMessage;
 import ink.magma.lavanotify.utils.FeedbackManager;
 import ink.magma.lavanotify.utils.Messenger;
 import ink.magma.lavanotify.utils.PlayerFilter;
@@ -19,7 +20,7 @@ public class MainCommand {
         Messenger.sendChat(PlayerFilter.getAll(), message);
 
         FeedbackManager.toConsole("Chat", "All", message);
-        FeedbackManager.toSender(sender, FeedbackManager.SenderFeedbackType.SUCCESS);
+        sender.sendMessage(SuccessMessage.sendSuccess());
     }
 
     @Subcommand("chat server")
@@ -28,7 +29,7 @@ public class MainCommand {
             Messenger.sendChat(PlayerFilter.getInServer(serverName), message);
 
             FeedbackManager.toConsole("Chat", "Server " + serverName, message);
-            FeedbackManager.toSender(sender, FeedbackManager.SenderFeedbackType.SUCCESS);
+            sender.sendMessage(SuccessMessage.sendSuccess());
         } catch (NoSuchServerException e) {
             sender.sendMessage(ErrorMessage.noSuchServer());
         }
@@ -40,7 +41,7 @@ public class MainCommand {
         Messenger.sendChat(PlayerFilter.getAll(), appendBroadcastPrefix(message));
 
         FeedbackManager.toConsole("Chat", "All", appendBroadcastPrefix(message));
-        FeedbackManager.toSender(sender, FeedbackManager.SenderFeedbackType.SUCCESS);
+        sender.sendMessage(SuccessMessage.sendSuccess());
     }
 
     @Subcommand("broadcast server")
@@ -49,7 +50,7 @@ public class MainCommand {
             Messenger.sendChat(PlayerFilter.getInServer(serverName), appendBroadcastPrefix(message));
 
             FeedbackManager.toConsole("Chat", "Server " + serverName, appendBroadcastPrefix(message));
-            FeedbackManager.toSender(sender, FeedbackManager.SenderFeedbackType.SUCCESS);
+            sender.sendMessage(SuccessMessage.sendSuccess());
         } catch (NoSuchServerException e) {
             sender.sendMessage(ErrorMessage.noSuchServer());
         }
@@ -67,7 +68,7 @@ public class MainCommand {
         Messenger.sendActionBar(PlayerFilter.getAll(), message);
 
         FeedbackManager.toConsole("ActionBar", "All", message);
-        FeedbackManager.toSender(sender, FeedbackManager.SenderFeedbackType.SUCCESS);
+        sender.sendMessage(SuccessMessage.sendSuccess());
     }
 
 
@@ -77,7 +78,7 @@ public class MainCommand {
             Messenger.sendActionBar(PlayerFilter.getInServer(serverName), message);
 
             FeedbackManager.toConsole("ActionBar", "Server " + serverName, message);
-            FeedbackManager.toSender(sender, FeedbackManager.SenderFeedbackType.SUCCESS);
+            sender.sendMessage(SuccessMessage.sendSuccess());
         } catch (NoSuchServerException e) {
             sender.sendMessage(ErrorMessage.noSuchServer());
         }
@@ -92,7 +93,7 @@ public class MainCommand {
             Messenger.sendTitle(PlayerFilter.getAll(), title, subtitle, fadeIn, stay, fadeOut);
 
             FeedbackManager.toConsole("Title", "All", title + " " + subtitle);
-            FeedbackManager.toSender(sender, FeedbackManager.SenderFeedbackType.SUCCESS);
+            sender.sendMessage(SuccessMessage.sendSuccess());
         } catch (CannotParseTitleException e) {
             sender.sendMessage(ErrorMessage.cannotParseTitle());
         }
@@ -108,7 +109,7 @@ public class MainCommand {
             Messenger.sendTitle(PlayerFilter.getInServer(serverName), title, subtitle, fadeIn, stay, fadeOut);
 
             FeedbackManager.toConsole("Title", "Server " + serverName, title + " " + subtitle);
-            FeedbackManager.toSender(sender, FeedbackManager.SenderFeedbackType.SUCCESS);
+            sender.sendMessage(SuccessMessage.sendSuccess());
         } catch (CannotParseTitleException e) {
             sender.sendMessage(ErrorMessage.cannotParseTitle());
         } catch (NoSuchServerException e) {
@@ -124,7 +125,7 @@ public class MainCommand {
         Messenger.sendBossBar(PlayerFilter.getAll(), message);
 
         FeedbackManager.toConsole("BossBar", "All", message);
-        FeedbackManager.toSender(sender, FeedbackManager.SenderFeedbackType.SUCCESS);
+        sender.sendMessage(SuccessMessage.sendSuccess());
     }
 
     @Subcommand("bossbar server")
@@ -133,7 +134,7 @@ public class MainCommand {
             Messenger.sendBossBar(PlayerFilter.getInServer(serverName), message);
 
             FeedbackManager.toConsole("BossBar", "Server", message);
-            FeedbackManager.toSender(sender, FeedbackManager.SenderFeedbackType.SUCCESS);
+            sender.sendMessage(SuccessMessage.sendSuccess());
         } catch (NoSuchServerException e) {
             sender.sendMessage(ErrorMessage.noSuchServer());
         }

@@ -1,8 +1,6 @@
 package ink.magma.lavanotify.utils;
 
-import com.velocitypowered.api.command.CommandSource;
 import net.kyori.adventure.text.Component;
-import net.kyori.adventure.text.format.NamedTextColor;
 
 import java.text.MessageFormat;
 
@@ -33,15 +31,5 @@ public class FeedbackManager {
      */
     public static void toConsole(String type, String channel, String message) {
         toConsole(type, channel, Messenger.autoParse(message));
-    }
-
-    public static void toSender(CommandSource source, SenderFeedbackType senderFeedbackType) {
-        if (senderFeedbackType == SenderFeedbackType.SUCCESS) {
-            source.sendMessage(Component.text("Notify has been sent.").color(NamedTextColor.GRAY));
-        }
-    }
-
-    public enum SenderFeedbackType {
-        SUCCESS
     }
 }
