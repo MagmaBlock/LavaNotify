@@ -1,11 +1,36 @@
 # LavaNotify
-适用于 Velocity 的一个公告插件。目前不太完善，但是能用。
+A notify plugin for Velocity. Simple but works.
 
-## 特点
-* 同时支持 MiniMessage 和 旧版聊天样式代码。
+## Feature
+* Support both MiniMessage and legacy style code (included HEX color)
 ```html
-<!-- 支持识别如下样式 -->
-<red><bold>I'm red and bold.</bold></red> &r&fI'm white!
+<!-- You can  -->
+<red><bold>I'm red and bold.</bold></red> &r&fI'm white! <reset><color:#f082ff>More</color> &#123456colors!
 ```
-* 支持将消息发送到全服或某个服务器。
-* 支持聊天栏、ActionBar、BossBar and Title
+* Support send to all players or a single server.
+* Notify display to Chat, ActionBar, BossBar and Title.
+
+## Command
+
+`/notify <type> <channel> ...`
+
+* `<type>`: Can be `actionbar`, `bossbar`, `chat`, `title` and `broadcast`.
+  * `broadcast` will send a chat message with `<!>` prefix.
+  * `bossbar` now only will send a blue bar with 10s.
+* `<channel>`: filter players to send.
+  * `all` send to all players in this Velocity server.
+  * `server` send to specified server.
+
+### Send a title
+
+```
+/notify title <channel> [title] [subtitle] [fadeIn] [stay] [fadeOut]
+/notify title server lobby "This is a <green>title</green>!" "This is a subtitle." 500 1000 1000
+```
+
+* `title` and `subtitile`: Single or double quotation (`'` / `"`) can be used to separate different lines of a title.
+* `fadeIn`, `stay` and `fadeOut`:  Using milliseconds. Default are 500, 3000, 500.
+
+### Alias for broadcast
+
+`/broadcast`, `/alert`, `/bc` are some aliases of `/notify broadcast all`.
