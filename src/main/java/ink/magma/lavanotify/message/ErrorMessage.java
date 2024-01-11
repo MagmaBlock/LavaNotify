@@ -9,7 +9,7 @@ public class ErrorMessage {
     }
 
     public static Component cannotParseTitle() {
-        return Component.text("Cannot parse title. The title should have at least one line. Using '\\n' to split it.").color(NamedTextColor.RED);
+        return Component.text("Cannot parse title. The title should have at least one line.").color(NamedTextColor.RED);
     }
 
 }

@@ -24,7 +24,7 @@ public class Messenger {
      * @param styledMessage 带有样式的字符消息
      * @return Component 消息
      */
-    public static @NotNull Component autoParse(String styledMessage) {
+    public static @NotNull Component autoParse(@NotNull String styledMessage) {
         return miniMessage.deserialize(legacyToMiniMessage(styledMessage));
     }
 
@@ -34,7 +34,7 @@ public class Messenger {
      *
      * @param styledMessage legacy 输入
      */
-    public static @NotNull String legacyToMiniMessage(String styledMessage) {
+    public static @NotNull String legacyToMiniMessage(@NotNull String styledMessage) {
         Map<String, String> legacyToMiniMessageMap = new HashMap<>();
         legacyToMiniMessageMap.put("0", "<black>");
         legacyToMiniMessageMap.put("1", "<dark_blue>");
@@ -128,8 +128,12 @@ public class Messenger {
      * @throws CannotParseTitleException 解析失败时掷出
      */
     public static void sendTitle(Collection<Player> players, String title, String subtitle, int fadeIn, int stay, int fadeOut) throws CannotParseTitleException {
-        Component line1 = autoParse(title);
-        Component line2 = autoParse(subtitle);
+        if (title == null && subtitle == null) {
+            throw new CannotParseTitleException();
+        }
+
+        Component line1 = title != null ? autoParse(title) : Component.empty();
+        Component line2 = subtitle != null ? autoParse(subtitle) : Component.empty();
 
         Title.Times titleTimes = Title.Times.times(Duration.ofMillis(fadeIn), Duration.ofMillis(stay), Duration.ofMillis(fadeOut));
         Title titleObject = Title.title(line1, line2, titleTimes);

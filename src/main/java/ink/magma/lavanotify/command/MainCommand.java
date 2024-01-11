@@ -86,8 +86,12 @@ public class MainCommand {
 
     @Subcommand("title all")
     public void titleAll(
-            CommandSource sender, @Named("title") String title, @Named("subtitle") String subtitle,
-            @Named("fadeIn") @Default("500") int fadeIn, @Named("stay") @Default("3000") int stay, @Named("fadeOut") @Default("500") int fadeOut
+            CommandSource sender,
+            @Optional @Named("title") String title,
+            @Optional @Named("subtitle") String subtitle,
+            @Named("fadeIn") @Default("500") int fadeIn,
+            @Named("stay") @Default("3000") int stay,
+            @Named("fadeOut") @Default("500") int fadeOut
     ) {
         try {
             Messenger.sendTitle(PlayerFilter.getAll(), title, subtitle, fadeIn, stay, fadeOut);
@@ -101,9 +105,13 @@ public class MainCommand {
 
     @Subcommand("title server")
     public void titleServer(
-            CommandSource sender, @Single String serverName,
-            @Named("title") String title, @Named("subtitle") String subtitle,
-            @Named("fadeIn") @Default("500") int fadeIn, @Named("stay") @Default("3000") int stay, @Named("fadeOut") @Default("500") int fadeOut
+            CommandSource sender,
+            @Single String serverName,
+            @Named("title") @Optional String title,
+            @Named("subtitle") @Optional String subtitle,
+            @Named("fadeIn") @Default("500") int fadeIn,
+            @Named("stay") @Default("3000") int stay,
+            @Named("fadeOut") @Default("500") int fadeOut
     ) {
         try {
             Messenger.sendTitle(PlayerFilter.getInServer(serverName), title, subtitle, fadeIn, stay, fadeOut);
